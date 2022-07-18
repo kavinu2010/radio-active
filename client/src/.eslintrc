@@ -1,0 +1,3 @@
+{
+  "extends": ["salt", "salt/react", "salt/react/hooks"]
+}

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const Radiostation = () => {
-  return (
-    <div>Radiostation</div>
-  )
-}
+const Radiostation = () => (
+  <div>Radiostation</div>
+);
 
-export default Radiostation
+export default Radiostation;

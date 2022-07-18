@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const ResultsList = () => {
-  return (
-    <div>ResultsList</div>
-  )
-}
+const ResultsList = () => (
+  <div>ResultsList</div>
+);
 
-export default ResultsList
+export default ResultsList;

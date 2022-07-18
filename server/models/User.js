@@ -1,0 +1,1 @@
+// Mongoose schema for users (Authentication process) 
