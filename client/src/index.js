@@ -12,6 +12,3 @@ root.render(
 );
 
  
-// cd /path/to/PROJECT1
-// git submodule add ssh://path.to.repo/MEDIA
-// git commit -m "Added Media submodule"

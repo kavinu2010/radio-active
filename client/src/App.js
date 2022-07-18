@@ -1,12 +1,17 @@
  
 import './App.css';
+import Header from './components/Header';
+import Filter from './components/Filter';
+import ResultsList from './components/ResultsList';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      <Header/>
+      <Filter/>
+      <ResultsList/>
+      <Footer/>
     </div>
   );
 }
