@@ -6,14 +6,15 @@ import styled from 'styled-components';
 
 const FavoritesList = () => {
   // const [stations, setStations] = useState([]);
-  const { user } = useAuth0();
-
+  const { user, isLoading, isAuthenticated } = useAuth0();
   useEffect(() => {
-    console.log('123', user);
-    fetch(`http://localhost:5001/favorites/${user.email}`)
-      .then(res => res.json())
-      .then(data => console.log('abbc', data));
-  }, [user, user.email]);
+    console.log({ isLoading, user });
+    if (!isLoading && isAuthenticated) { // doesnt do the fetch unless the user is loaded
+      fetch(`http://localhost:5001/favorites/${user.email}`)
+        .then(res => res.json())
+        .then(data => console.log('abbc', data));
+    }
+  }, [isLoading, user, isAuthenticated]);
 
   // useEffect(() => {
   //   const uri = `http://91.132.145.114/json/stations/byuuid/${filter.country}?hidebroken=true&order=name&limit=10`;

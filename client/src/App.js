@@ -25,8 +25,8 @@ function App() {
 
   return (
     <section className="App">
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route
             path="/"
@@ -43,9 +43,10 @@ function App() {
                 <FavoritesLists />
               </Body>
             )} />
+          {/* Add about route */}
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </section>
   );
 }
