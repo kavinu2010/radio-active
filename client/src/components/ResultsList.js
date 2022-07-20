@@ -5,7 +5,6 @@ import RadioStation from './RadioStation';
 
 const ResultsList = ({ filter }) => {
   const [stations, setStations] = useState([]);
-  console.log('hellloooooo', filter.country);
 
   useEffect(() => {
     const uri = `http://91.132.145.114/json/stations/bycountry/${filter.country}?hidebroken=true&order=name&limit=10`;
@@ -20,7 +19,6 @@ const ResultsList = ({ filter }) => {
           genres: station.tags,
           country: filter.country,
         }));
-
         setStations(filteredStations);
       });
   }, [filter]);
@@ -28,7 +26,7 @@ const ResultsList = ({ filter }) => {
     <Wrapper>
       ResultsList
       {stations.map(station => (
-        <RadioStation station={station} />
+        <RadioStation key={station.id} station={station} />
       ))}
     </Wrapper>
 

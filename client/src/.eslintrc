@@ -1,3 +1,6 @@
 {
-  "extends": ["salt", "salt/react", "salt/react/hooks"]
+  "extends": ["salt", "salt/react", "salt/react/hooks"], 
+  "rules": {
+    "linebreak-style": 0
+  }
 }

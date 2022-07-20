@@ -9,12 +9,12 @@ const Filter = ({ countries, setFilter }) => {
 
   return (
     <section>
-      {' '}
+      {/* <label for="countries">Filter by Country</label> */}
       Filter by Country
       <CountryFilter onChange={changeHandler} name="countries" id="countries" size="10">
-        <option value="allCountries">All Countries</option>
+        <option value="allCountries" key="allCountries">All Countries</option>
         {countries.map(country => (
-          <option value={country}>{country}</option>
+          <option value={country} key={country}>{country}</option>
         ))}
       </CountryFilter>
     </section>

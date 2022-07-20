@@ -1,6 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import FavoritesLists from './components/FavoritesList';
 import Header from './components/Header';
 import Filter from './components/Filter';
 import ResultsList from './components/ResultsList';
@@ -24,10 +26,25 @@ function App() {
   return (
     <section className="App">
       <Header />
-      <Body>
-        <Filter countries={countries} setFilter={setFilter} />
-        <ResultsList filter={filter} />
-      </Body>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={(
+              <Body>
+                <Filter countries={countries} setFilter={setFilter} />
+                <ResultsList filter={filter} />
+              </Body>
+            )} />
+          <Route
+            path="/favorites"
+            element={(
+              <Body>
+                <FavoritesLists />
+              </Body>
+            )} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </section>
   );

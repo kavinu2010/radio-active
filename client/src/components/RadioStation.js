@@ -10,7 +10,7 @@ const Radiostation = ({ station }) => {
     console.log('favorited: ', station.id);
   };
   return (
-    <Station key={station.id}>
+    <Station>
       <img src={station.favicon} alt="" />
       <h2>{station.name}</h2>
       <FavoriteBorderIcon onClick={handleFavorite} />
