@@ -33,7 +33,6 @@ const ResultsList = ({ filter }) => {
           country: filter.country,
         };
         if (favorites.some(uuid => station.stationuuid === uuid)) {
-          console.log('this is a user favorite', station.name);
           filteredStation.favorite = true;
           return filteredStation;
         }

@@ -1,41 +1,107 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Filter = ({ countries, setFilter }) => {
+  const [findCountry, setFindCountry] = useState('');
+  const [searchCountries, setSearchCountries] = useState([]);
+  const [activeSearch, setActiveSearch] = useState(false);
+
   const changeHandler = event => {
+    setFindCountry(event.target.value);
+  };
+
+  const handleSubmit = event => {
     setFilter({ country: event.target.value });
+    setFindCountry(event.target.value);
+  };
+
+  useEffect(() => {
+    if (countries.length > 0 && findCountry) {
+      const regex = new RegExp(findCountry, 'gi');
+      const filtered = countries.filter(el => el.toLowerCase().match(regex));
+      setSearchCountries(filtered);
+    } else if (!findCountry) {
+      setSearchCountries(countries);
+    }
+  }, [findCountry, countries, setSearchCountries]);
+
+  const hideList = () => {
+    setTimeout(() => {
+      setActiveSearch(false);
+    }, 5);
+  };
+
+  const showList = event => {
+    event.target.select();
+    setActiveSearch(true);
   };
 
   return (
-    <Section>
-      {/* <label for="countries">Filter by Country</label> */}
-      <h3>Filter by Country</h3>
-      <CountryFilter onChange={changeHandler} name="countries" id="countries">
-        <option value="allCountries" key="allCountries">All Countries</option>
-        {countries.map(country => (
-          <option value={country} key={country}>{country}</option>
-        ))}
-      </CountryFilter>
-    </Section>
+    <FilterBox>
+      <label>
+        Filter by Country
+        <Searchfield
+          type="text"
+          onFocus={showList}
+          onBlur={hideList}
+          value={findCountry}
+          onChange={changeHandler}
+          placeholder="country"
+          id="countries" />
+      </label>
+      <FilterList active={activeSearch}>
+        {searchCountries
+          .map(country => (
+            <button type="submit" value={country} key={country} onClick={handleSubmit}>
+              {country}
+            </button>
+          ))}
+      </FilterList>
+    </FilterBox>
   );
 };
 
-const Section = styled.section`
-display: flex;
-width: 100%;
-justify-content: space-between;
-align-items: center;
+const FilterBox = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  label{
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 100%;
+  }
 `;
-const CountryFilter = styled.select`
-  width: 50%;
+
+const Searchfield = styled.input`
+  width: 60%;
   font-size: 1rem;
   padding: 5px;
   border-radius: 0.25rem;
-option {
-  width: 50%;
-  background-color: blue;
-}
+  margin-top: 0.5rem;
+`;
+
+const FilterList = styled.ul`
+  display:flex;
+  flex-direction:column;
+  width: 60%;
+  height: ${props => (props.active ? '8rem' : '0')};
+  overflow-y: scroll;
+
+  button{
+    background-color: rgba(0,0,0, 0.3);
+    font-size: 1rem;
+    border: none;
+    padding: .3rem;
+
+    &:hover{
+      border: 2px solid blue;
+    }
+  }
+  
 `;
 
 export default Filter;
