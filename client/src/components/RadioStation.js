@@ -1,19 +1,48 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react'; // , { useState }
 import styled from 'styled-components';
+import { useAuth0 } from '@auth0/auth0-react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+// get user
+// wait for authenticated
+
+// display addFavoriteButton / removeFavoriteButton depending on favorite state of station
+// when click favorite button
+// fetch post req with user email and station id
 
 const Radiostation = ({ station }) => {
-  const handleFavorite = () => {
-    console.log('favorited: ', station.id);
+  const { isAuthenticated } = useAuth0();
+  const [favorite, setFavorite] = useState(station.favorite);
+
+  const addFavorite = () => {
+    console.log('favorited: ', station.name);
+    setFavorite(true);
   };
+  const unFavorite = () => {
+    console.log('removed favorite: ', station.name);
+    setFavorite(false);
+  };
+
+  const renderFavBtn = () => {
+    console.log({ isAuthenticated });
+    if (isAuthenticated) {
+      if (favorite) {
+        return <FavoriteIcon onClick={unFavorite} />;
+      }
+      return <FavoriteBorderIcon onClick={addFavorite} />;
+    }
+    // add onClick and display "need to log in to add favorites"
+    return <FavoriteBorderIcon disabled />;
+  };
+
   return (
     <Station>
       <img src={station.favicon} alt="" />
       <h2>{station.name}</h2>
-      <FavoriteBorderIcon onClick={handleFavorite} />
+      {renderFavBtn()}
       <p>{station.language}</p>
       <audio controls>
         <source src={station.url} type="audio/mp3" />

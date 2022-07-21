@@ -7,6 +7,4 @@ router.route('/favorites').post(addFavorite);
 
 router.route('/favorites/:user').get(getFavorites);
 
-
-
 module.exports = router;
