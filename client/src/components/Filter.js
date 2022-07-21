@@ -8,25 +8,33 @@ const Filter = ({ countries, setFilter }) => {
   };
 
   return (
-    <section>
+    <Section>
       {/* <label for="countries">Filter by Country</label> */}
-      Filter by Country
-      <CountryFilter onChange={changeHandler} name="countries" id="countries" size="10">
+      <h3>Filter by Country</h3>
+      <CountryFilter onChange={changeHandler} name="countries" id="countries">
         <option value="allCountries" key="allCountries">All Countries</option>
         {countries.map(country => (
           <option value={country} key={country}>{country}</option>
         ))}
       </CountryFilter>
-    </section>
+    </Section>
   );
 };
 
+const Section = styled.section`
+display: flex;
+width: 100%;
+justify-content: space-between;
+align-items: center;
+`;
 const CountryFilter = styled.select`
-width: 50%;
-/* font-family: 'Rubik Glitch', cursive; */
-select{
-  font-size:1rem;
-  overflow: hidden;
+  width: 50%;
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 0.25rem;
+option {
+  width: 50%;
+  background-color: blue;
 }
 `;
 

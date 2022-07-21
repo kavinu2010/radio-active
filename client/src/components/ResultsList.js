@@ -23,20 +23,7 @@ const ResultsList = ({ filter }) => {
       }
       const data = await fetch(uri).then(res => res.json());
       const filteredStations = await data.map(station => {
-        if (favorites.some(uuid => station.stationuuid === uuid)) {
-          console.log('this is a user favorite', station.name);
-          return {
-            id: station.stationuuid,
-            name: station.name,
-            url: station.url_resolved,
-            favicon: station.favicon,
-            language: station.language,
-            genres: station.tags,
-            country: filter.country,
-            favorite: true,
-          };
-        }
-        return {
+        const filteredStation = {
           id: station.stationuuid,
           name: station.name,
           url: station.url_resolved,
@@ -44,8 +31,14 @@ const ResultsList = ({ filter }) => {
           language: station.language,
           genres: station.tags,
           country: filter.country,
-          favorite: false,
         };
+        if (favorites.some(uuid => station.stationuuid === uuid)) {
+          console.log('this is a user favorite', station.name);
+          filteredStation.favorite = true;
+          return filteredStation;
+        }
+        filteredStation.favorite = false;
+        return filteredStation;
       });
       setStations(filteredStations);
     };
