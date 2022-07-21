@@ -16,14 +16,14 @@ const ResultsList = ({ filter }) => {
           .then(res => res.json())
           .then(data => {
             if (data.success) {
-              favorites.push([...data.favorites]);
+              favorites.push(...data.favorites);
             }
           })
           .catch(error => console.log('No favorites for user ', error.message));
       }
       const data = await fetch(uri).then(res => res.json());
       const filteredStations = await data.map(station => {
-        if (favorites[0].some(uuid => station.stationuuid === uuid)) {
+        if (favorites.some(uuid => station.stationuuid === uuid)) {
           console.log('this is a user favorite', station.name);
           return {
             id: station.stationuuid,
