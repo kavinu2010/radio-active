@@ -6,43 +6,58 @@ import { useAuth0 } from '@auth0/auth0-react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-// get user
-// wait for authenticated
-
-// display addFavoriteButton / removeFavoriteButton depending on favorite state of station
-// when click favorite button
-// fetch post req with user email and station id
-
 const Radiostation = ({ station }) => {
-  const { isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const [favorite, setFavorite] = useState(station.favorite);
 
-  const addFavorite = () => {
+  const addFavorite = async () => {
+    await fetch('http://localhost:5001/favorites', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: user.email,
+        station: station.id,
+      }),
+    });
     console.log('favorited: ', station.name);
     setFavorite(true);
   };
-  const unFavorite = () => {
+
+  const unFavorite = async () => {
+    await fetch('http://localhost:5001/favorites', {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: user.email,
+        station: station.id,
+      }),
+    });
     console.log('removed favorite: ', station.name);
     setFavorite(false);
   };
 
   const renderFavBtn = () => {
-    console.log({ isAuthenticated });
     if (isAuthenticated) {
       if (favorite) {
-        return <FavoriteIcon onClick={unFavorite} />;
+        return <FavoriteIcon className="favoriteBtn" onClick={unFavorite} />;
       }
-      return <FavoriteBorderIcon onClick={addFavorite} />;
+      return <FavoriteBorderIcon className="favoriteBtn" onClick={addFavorite} />;
     }
     // add onClick and display "need to log in to add favorites"
-    return <FavoriteBorderIcon disabled />;
+    return <FavoriteBorderIcon className="favoriteBtn" disabled />;
   };
 
   return (
     <Station>
-      <img src={station.favicon} alt="" />
-      <h2>{station.name}</h2>
-      {renderFavBtn()}
+      <div className="playerHeader">
+        <img src={station.favicon} alt="" />
+        <h2>{station.name}</h2>
+        {renderFavBtn()}
+      </div>
       <p>{station.language}</p>
       <audio controls>
         <source src={station.url} type="audio/mp3" />
@@ -52,25 +67,36 @@ const Radiostation = ({ station }) => {
 };
 
 const Station = styled.section`
-background-color:salmon;
-border-radius:0.25rem;
+background-color: salmon;
+border-radius: 0.25rem;
 padding: 0.5rem;
 display: flex;
-flex-direction:column;
+flex-direction: column;
 gap: 0.5rem;
+
+.playerHeader{
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+};
+
+/* .favoriteBtn{
+  align-self: flex-end;
+} */
 
 img{
   max-width: 30px;
   max-height: 30px;
-  position: absolute;
 }
+
 audio{
+  width:100%;
   height: 30px;
 }
+
 h2{
   font-size: 1rem;
-  margin-left: 35px;
-  
 }
 `;
 export default Radiostation;

@@ -23,7 +23,8 @@ const ResultsList = ({ filter }) => {
       }
       const data = await fetch(uri).then(res => res.json());
       const filteredStations = await data.map(station => {
-        if (favorites.some(uuid => station.stationuuid === uuid)) {
+        if (favorites[0].some(uuid => station.stationuuid === uuid)) {
+          console.log('this is a user favorite', station.name);
           return {
             id: station.stationuuid,
             name: station.name,

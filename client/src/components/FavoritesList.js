@@ -8,7 +8,6 @@ const FavoritesList = () => {
   // const [stations, setStations] = useState([]);
   const { user, isLoading, isAuthenticated } = useAuth0();
   useEffect(() => {
-    console.log({ isLoading, user });
     if (!isLoading && isAuthenticated) { // doesnt do the fetch unless the user is loaded
       fetch(`http://localhost:5001/favorites/${user.email}`)
         .then(res => res.json())
