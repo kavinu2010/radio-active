@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'; // useEffect
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import FavoritesLists from './components/FavoritesList';
@@ -7,21 +7,10 @@ import Header from './components/Header';
 import Filter from './components/Filter';
 import ResultsList from './components/ResultsList';
 import Footer from './components/Footer';
-
-const COUNTRY_URI = 'http://91.132.145.114/json/countries';
+import countries from './data/countries.json';
 
 function App() {
-  const [countries, setCountries] = useState([]);
   const [filter, setFilter] = useState({});
-
-  useEffect(() => {
-    fetch(COUNTRY_URI)
-      .then(data => data.json())
-      .then(data => {
-        const countryList = data.map(country => country.name);
-        setCountries(countryList);
-      });
-  }, []);
 
   return (
     <section className="App">

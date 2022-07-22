@@ -33,7 +33,6 @@ const ResultsList = ({ filter }) => {
           country: filter.country,
         };
         if (favorites.some(uuid => station.stationuuid === uuid)) {
-          console.log('this is a user favorite', station.name);
           filteredStation.favorite = true;
           return filteredStation;
         }
@@ -49,7 +48,6 @@ const ResultsList = ({ filter }) => {
 
   return (
     <Wrapper>
-      ResultsList
       {stations.map(station => (
         <RadioStation key={station.id} station={station} />
       ))}
@@ -60,11 +58,12 @@ const ResultsList = ({ filter }) => {
 
 const Wrapper = styled.ul`
 margin-top: 1.3rem;
-  background-color: white;
+  background-color: rgba(0,0,0, 0.5);
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 0.4rem;
 `;
 
 export default ResultsList;
