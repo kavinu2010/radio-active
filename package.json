@@ -1,0 +1,33 @@
+{
+  "name": "radio-active",
+  "version": "1.0.0",
+  "description": "Global radio stations on demand",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node /server",
+    "client": "cd client && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kavinu2010/radio-active.git"
+  },
+  "keywords": [
+    "radio",
+    "radio",
+    "station",
+    "music",
+    "music",
+    "player",
+    "search",
+    "engine",
+    "api"
+  ],
+  "author": "Kavitha Sujatha, Gabriele Orlandi, Navid Mani Asl, Catherine Ostlund",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kavinu2010/radio-active/issues"
+  },
+  "homepage": "https://github.com/kavinu2010/radio-active#readme"
+}
