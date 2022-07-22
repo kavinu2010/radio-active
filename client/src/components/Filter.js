@@ -33,8 +33,8 @@ const Filter = ({ countries, setFilter }) => {
     }, 5);
   };
 
-  const showList = event => {
-    event.target.select();
+  const showList = () => {
+    // event.target.select();
     setActiveSearch(true);
   };
 
@@ -98,7 +98,7 @@ const FilterList = styled.ul`
     width:100%;
 
     &:hover{
-      border: 2px solid blue;
+      background-color: rgba(0,0,0, 0.5);
     }
   }
   
