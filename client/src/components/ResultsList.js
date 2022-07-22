@@ -41,7 +41,6 @@ const ResultsList = ({ filter }) => {
       });
       setStations(filteredStations);
     };
-
     const uri = `http://91.132.145.114/json/stations/bycountry/${filter.country}?hidebroken=true&order=name&limit=10`;
     getStations(uri);
   }, [filter, isAuthenticated, isLoading, user]);
@@ -58,12 +57,13 @@ const ResultsList = ({ filter }) => {
 
 const Wrapper = styled.ul`
 margin-top: 1.3rem;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0,0,0, 0.2);
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 0.4rem;
+  margin-bottom: 2rem;
 `;
 
 export default ResultsList;

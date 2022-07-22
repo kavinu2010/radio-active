@@ -67,7 +67,7 @@ const Radiostation = ({ station }) => {
 };
 
 const Station = styled.section`
-background-color: salmon;
+background-color: rgba(255, 255, 255, 0.588);
 border-radius: 0.25rem;
 padding: 0.5rem;
 display: flex;

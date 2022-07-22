@@ -81,9 +81,11 @@
 
 #menu
 {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   width: 100vw;
-  margin: -125px 0 0 -70px;
+  margin: -125px 0 0 -60px;
   padding: 1rem;
   padding-top: 125px;
   background: #d4f63d;

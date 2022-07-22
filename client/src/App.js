@@ -41,7 +41,6 @@ function App() {
 }
 
 const Body = styled.section`
-  border: .5px dotted fuchsia;
   width: 90%;
   margin-top: 1rem; 
 `;

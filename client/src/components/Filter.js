@@ -80,9 +80,10 @@ const FilterBox = styled.section`
 const Searchfield = styled.input`
   width: 60%;
   font-size: 1rem;
-  padding: 5px;
+  padding: 0.5rem;
   border-radius: 0.25rem;
   margin-top: 0.5rem;
+  border: 1px solid grey;
 `;
 
 const FilterList = styled.ul`
