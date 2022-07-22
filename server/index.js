@@ -16,16 +16,18 @@ const corsOptions = {
   },
   credentials: true,
 };
-
 app.use(cors(corsOptions));
 app.use(express.json());
 
 dbConnection();
 
-app.use('/', require('./routes'));
+app.use(require('./routes'));
 
-app.get('/', (req, res) => {
-  res.send('r u happy now?');
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(`${__dirname}/static`));
+  app.get('*', (req, res) => {
+    res.type('html').sendFile(`${__dirname}/static/index.html`);
+  });
+}
 
 app.listen(PORT, () => console.info(`Server is running on port ${PORT}`));
