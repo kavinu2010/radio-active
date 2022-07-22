@@ -20,7 +20,7 @@ const Filter = ({ countries, setFilter }) => {
   useEffect(() => {
     if (countries.length > 0 && findCountry) {
       const regex = new RegExp(findCountry, 'gi');
-      const filtered = countries.filter(el => el.toLowerCase().match(regex));
+      const filtered = countries.filter(country => country.toLowerCase().match(regex));
       setSearchCountries(filtered);
     } else if (!findCountry) {
       setSearchCountries(countries);
@@ -44,6 +44,7 @@ const Filter = ({ countries, setFilter }) => {
         Filter by Country
         <Searchfield
           type="text"
+          autoComplete="off"
           onFocus={showList}
           onBlur={hideList}
           value={findCountry}
@@ -85,8 +86,6 @@ const Searchfield = styled.input`
 `;
 
 const FilterList = styled.ul`
-  display:flex;
-  flex-direction:column;
   width: 60%;
   height: ${props => (props.active ? '8rem' : '0')};
   overflow-y: scroll;
@@ -96,6 +95,7 @@ const FilterList = styled.ul`
     font-size: 1rem;
     border: none;
     padding: .3rem;
+    width:100%;
 
     &:hover{
       border: 2px solid blue;
