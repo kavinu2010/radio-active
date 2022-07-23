@@ -40,18 +40,18 @@ const Filter = ({ countries, setFilter }) => {
 
   return (
     <FilterBox>
-      <label>
-        Filter by Country
-        <Searchfield
-          type="text"
-          autoComplete="off"
-          onFocus={showList}
-          onBlur={hideList}
-          value={findCountry}
-          onChange={changeHandler}
-          placeholder="country"
-          id="countries" />
-      </label>
+      <label htmlFor="countries" />
+      Filter by Country
+      <Searchfield
+        type="text"
+        autoComplete="off"
+        onFocus={showList}
+        onBlur={hideList}
+        value={findCountry}
+        onChange={changeHandler}
+        placeholder="country"
+        id="countries" />
+      {/* </label> */}
       <FilterList active={activeSearch}>
         {searchCountries
           .map(country => (
