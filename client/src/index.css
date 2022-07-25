@@ -10,13 +10,3 @@ body {
   /* 0deg, rgb(0, 0, 0) 0%, rgb(18, 9, 121) 35%, rgb(155, 217, 243) 100%) */
 
 }
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-  padding: 0;
-  border: 1px red solid;
-}
- 
-
-

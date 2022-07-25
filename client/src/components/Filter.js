@@ -86,7 +86,7 @@ const FilterBox = styled.section`
 `;
 
 const Searchfield = styled.input`
-  width: 60%;
+  width: 80%;
   font-size: 1rem;
   padding: 0.5rem;
   border-radius: 0.25rem;
@@ -94,12 +94,12 @@ const Searchfield = styled.input`
   border: 1px solid grey;
   @media (min-width: 768px){
     font-size: 1.2rem;
-
+    width: 60%;
   }
 `;
 
 const FilterList = styled.ul`
-  width: 60%;
+  width: 80%;
   height: 10rem;
   opacity: ${props => (props.active ? '100%' : '0')};
   overflow-y: scroll;
@@ -118,6 +118,7 @@ const FilterList = styled.ul`
   }
   @media (min-width: 768px){
     font-size: 1.2rem;
+    width: 60%;
 
     button{
       font-size: 1.2rem;
