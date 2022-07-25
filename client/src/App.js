@@ -32,7 +32,15 @@ function App() {
                 <FavoritesLists />
               </Body>
             )} />
-          {/* Add about route */}
+          {/*
+          <Route
+            path="/about"
+            element={(
+              <Body>
+                <About />
+              </Body>
+            )} />
+            */}
         </Routes>
         <Footer />
       </BrowserRouter>

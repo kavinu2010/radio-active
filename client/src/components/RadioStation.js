@@ -49,10 +49,14 @@ const Radiostation = ({ station }) => {
     return <FavoriteBorderIcon className="favoriteBtn" disabled />;
   };
 
+  const renderFavicon = () => {
+    try { return <img src={station.favicon || '/radio.jpeg'} alt="Radio Station Logo" />; } catch (error) { return console.log(error.message); }
+  };
+
   return (
     <Station>
       <div className="playerHeader">
-        <img src={station.favicon} alt="" />
+        {renderFavicon()}
         <h2>{station.name}</h2>
         {renderFavBtn()}
       </div>

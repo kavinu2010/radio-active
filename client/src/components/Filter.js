@@ -30,11 +30,11 @@ const Filter = ({ countries, setFilter }) => {
   const hideList = () => {
     setTimeout(() => {
       setActiveSearch(false);
-    }, 5);
+    }, 1000);
   };
 
-  const showList = () => {
-    // event.target.select();
+  const showList = event => {
+    event.target.select();
     setActiveSearch(true);
   };
 
@@ -51,7 +51,7 @@ const Filter = ({ countries, setFilter }) => {
         onChange={changeHandler}
         placeholder="country"
         id="countries" />
-      {/* </label> */}
+
       <FilterList active={activeSearch}>
         {searchCountries
           .map(country => (
