@@ -12,7 +12,7 @@ const ResultsList = ({ filter }) => {
     const getStations = async uri => {
       const favorites = [];
       if (!isLoading && isAuthenticated) {
-        await fetch(`http://localhost:5001/favorites/${user.email}`)
+        await fetch(`/favorites/${user.email}`)
           .then(res => res.json())
           .then(data => {
             if (data.success) {

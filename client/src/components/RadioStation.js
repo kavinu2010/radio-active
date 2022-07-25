@@ -11,7 +11,7 @@ const Radiostation = ({ station }) => {
   const [favorite, setFavorite] = useState(station.favorite);
 
   const addFavorite = async () => {
-    await fetch('http://localhost:5001/favorites', {
+    await fetch('/favorites', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -21,12 +21,11 @@ const Radiostation = ({ station }) => {
         station: station.id,
       }),
     });
-    console.log('favorited: ', station.name);
     setFavorite(true);
   };
 
   const unFavorite = async () => {
-    await fetch('http://localhost:5001/favorites', {
+    await fetch('/favorites', {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +35,6 @@ const Radiostation = ({ station }) => {
         station: station.id,
       }),
     });
-    console.log('removed favorite: ', station.name);
     setFavorite(false);
   };
 

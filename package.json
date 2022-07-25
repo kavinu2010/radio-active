@@ -4,10 +4,10 @@
   "description": "Global radio stations on demand",
   "main": "index.js",
   "scripts": {
+    "ui:build": "cd client && npm run build && cp -r build/. ../server/static/. && cd ..",
     "start": "cd server && npm install && npm start",
     "dev": "cd server && npm run dev",
     "client-dev": "cd client && npm start",
-    "pre-build": "cd client && npm run build && cp -r build/. ../server/static/.",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
