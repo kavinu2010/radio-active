@@ -40,8 +40,9 @@ const Filter = ({ countries, setFilter }) => {
 
   return (
     <FilterBox>
-      <label htmlFor="countries" />
-      Filter by Country
+      <label htmlFor="countries">
+        Filter by Country
+      </label>
       <Searchfield
         type="text"
         autoComplete="off"
@@ -67,13 +68,23 @@ const Filter = ({ countries, setFilter }) => {
 const FilterBox = styled.section`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 60%;
   align-items: center;
+  justify-content: center;
 
   label{
     font-size: 1.2rem;
     font-weight: bold;
-    width: 100%;
+    width: 60%;
+    }
+  @media (min-width: 768px){
+    font-size: 1.4rem;
+    width: 60%;
+
+    label{
+      margin-left: 10%;
+    }
+
   }
 `;
 
@@ -84,15 +95,21 @@ const Searchfield = styled.input`
   border-radius: 0.25rem;
   margin-top: 0.5rem;
   border: 1px solid grey;
+  @media (min-width: 768px){
+    font-size: 1.2rem;
+    width: 80%;
+    margin-left:65%;
+  }
 `;
 
 const FilterList = styled.ul`
   width: 60%;
-  height: ${props => (props.active ? '8rem' : '0')};
+  height: 10rem;
+  opacity: ${props => (props.active ? '100%' : '0')};
   overflow-y: scroll;
 
   button{
-    background-color: rgba(0,0,0, 0.3);
+    background-color: #8bc08b;;
     font-size: 1rem;
     border: none;
     padding: .3rem;
@@ -102,7 +119,15 @@ const FilterList = styled.ul`
       background-color: rgba(0,0,0, 0.5);
     }
   }
-  
+  @media (min-width: 768px){
+    margin-left: 65%;
+    width: 80%;
+    font-size: 1.2rem;
+
+    button{
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 export default Filter;

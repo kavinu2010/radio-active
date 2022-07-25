@@ -48,7 +48,7 @@ const ResultsList = ({ filter }) => {
 };
 
 const Wrapper = styled.ul`
-margin-top: 1.3rem;
+  margin-top: -7rem;
   background-color: rgba(0,0,0, 0.2);
   border-radius: 0.3rem;
   display: flex;

@@ -18,7 +18,12 @@ const Login = () => {
 const Wrapper = styled.section`
 display: inherit;
 flex-direction: column;
-font-size: 10px;
+font-size: .8rem;
+font-weight: bold;
+
+@media (min-width: 768px){
+  font-size: 1.1rem;
+ }
 `;
 export default Login;
 

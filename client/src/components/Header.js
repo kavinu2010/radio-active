@@ -21,7 +21,11 @@ const Wrapper = styled.section`
 
 const Title = styled.h1`
  font-family: 'Rubik Glitch', cursive;
- font-size: 2.3rem;
+ font-size: 2.9rem;
  font-weight: 200;
+
+ @media (min-width: 768px){
+  font-size: 5rem;
+ }
 `;
 export default Header;

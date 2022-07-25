@@ -2,8 +2,6 @@
 {
   display: block;
   position: relative;
-  /* top: 2rem;
-  left: 2rem; */
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
