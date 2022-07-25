@@ -20,7 +20,7 @@ const Filter = ({ countries, setFilter }) => {
   useEffect(() => {
     if (countries.length > 0 && findCountry) {
       const regex = new RegExp(findCountry, 'gi');
-      const filtered = countries.filter(country => country.toLowerCase().match(regex));
+      const filtered = countries.filter(country => country.match(regex));
       setSearchCountries(filtered);
     } else if (!findCountry) {
       setSearchCountries(countries);

@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 exports.getStations = async (req, res) => {
   const { country } = req.params; // set up on frontend request
-  const uri = `https://de1.api.radio-browser.info/json/stations/bycountry/${country}?hidebroken=true&order=random&limit=10`;
+  const uri = `https://de1.api.radio-browser.info/json/stations/search?country=${country}&hidebroken=true&order=random&limit=10&is_https=true`;
   try {
     const data = await fetch(uri).then(result => result.json());
     const filteredStations = await data.map(station => (
@@ -17,8 +17,6 @@ exports.getStations = async (req, res) => {
         country,
       }));
     return res.status(200).json(filteredStations);
-    // reach out to radio browser api
-    // send back filtered stations to front end
   } catch (error) {
     return res.status(500).json({ success: false, error: error.message });
   }
