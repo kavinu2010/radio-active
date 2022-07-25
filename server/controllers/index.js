@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 exports.getStations = async (req, res) => {
   const { country } = req.params; // set up on frontend request
-  const uri = `https://de1.api.radio-browser.info/json/stations/bycountry/${country}?hidebroken=true&order=name&limit=10`;
+  const uri = `http://91.132.145.114/json/stations/bycountry/${country}?hidebroken=true&order=name&limit=10`;
   // https://de1.api.radio-browser.info/json/stations/bycountry/austria
   try {
     const data = await fetch(uri).then(result => result.json());
