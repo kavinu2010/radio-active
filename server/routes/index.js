@@ -5,7 +5,7 @@ const {
 
 const router = express.Router();
 
-router.route('/stations').get(getStations);
+router.route('/stations/:country').get(getStations);
 
 router.route('/favorites').post(addFavorite).delete(deleteFavorite);
 
