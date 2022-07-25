@@ -68,9 +68,8 @@ const Filter = ({ countries, setFilter }) => {
 const FilterBox = styled.section`
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 90%;
   align-items: center;
-  justify-content: center;
 
   label{
     font-size: 1.2rem;
@@ -79,10 +78,8 @@ const FilterBox = styled.section`
     }
   @media (min-width: 768px){
     font-size: 1.4rem;
-    width: 60%;
-
     label{
-      margin-left: 10%;
+
     }
 
   }
@@ -97,8 +94,7 @@ const Searchfield = styled.input`
   border: 1px solid grey;
   @media (min-width: 768px){
     font-size: 1.2rem;
-    width: 80%;
-    margin-left:65%;
+
   }
 `;
 
@@ -107,21 +103,20 @@ const FilterList = styled.ul`
   height: 10rem;
   opacity: ${props => (props.active ? '100%' : '0')};
   overflow-y: scroll;
+  z-index: 1;
 
   button{
-    background-color: #8bc08b;;
+    background-color: #8bc08b;
     font-size: 1rem;
     border: none;
     padding: .3rem;
     width:100%;
 
     &:hover{
-      background-color: rgba(0,0,0, 0.5);
+      background-color: #71ea71;
     }
   }
   @media (min-width: 768px){
-    margin-left: 65%;
-    width: 80%;
     font-size: 1.2rem;
 
     button{
