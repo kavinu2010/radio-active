@@ -9,7 +9,7 @@ const ResultsList = ({ filter }) => {
   const { user, isLoading, isAuthenticated } = useAuth0();
 
   useEffect(() => {
-    const getStations = async uri => {
+    const getStations = async () => {
       const favorites = [];
       if (!isLoading && isAuthenticated) {
         await fetch(`/favorites/${user.email}`)
@@ -21,17 +21,9 @@ const ResultsList = ({ filter }) => {
           })
           .catch(error => console.log('No favorites for user ', error.message));
       }
-      const data = await fetch(uri).then(res => res.json());
+      const data = await fetch(`/stations/${filter.country}`).then(res => res.json());
       const filteredStations = await data.map(station => {
-        const filteredStation = {
-          id: station.stationuuid,
-          name: station.name,
-          url: station.url_resolved,
-          favicon: station.favicon,
-          language: station.language,
-          genres: station.tags,
-          country: filter.country,
-        };
+        const filteredStation = station;
         if (favorites.some(uuid => station.stationuuid === uuid)) {
           filteredStation.favorite = true;
           return filteredStation;
@@ -41,8 +33,8 @@ const ResultsList = ({ filter }) => {
       });
       setStations(filteredStations);
     };
-    const uri = `http://91.132.145.114/json/stations/bycountry/${filter.country}?hidebroken=true&order=name&limit=10`;
-    getStations(uri);
+
+    getStations();
   }, [filter, isAuthenticated, isLoading, user]);
 
   return (

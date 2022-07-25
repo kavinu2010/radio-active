@@ -1,4 +1,28 @@
+const fetch = require('node-fetch');
 const User = require('../models/User');
+
+exports.getStations = async (req, res) => {
+  const { country } = req.query; // set up on frontend request
+  const uri = `http://91.132.145.114/json/stations/bycountry/${country}?hidebroken=true&order=name&limit=10`;
+  try {
+    const data = await fetch(uri).then(result => result.json());
+    const filteredStations = await data.map(station => (
+      {
+        id: station.stationuuid,
+        name: station.name,
+        url: station.url_resolved,
+        favicon: station.favicon,
+        language: station.language,
+        genres: station.tags,
+        country,
+      }));
+    return res.status(200).json(filteredStations);
+    // reach out to radio browser api
+    // send back filtered stations to front end
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+};
 
 exports.getFavorites = async (req, res) => {
   const email = req.params.user;
