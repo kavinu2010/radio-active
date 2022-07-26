@@ -22,7 +22,8 @@ const ResultsList = ({ filter }) => {
           .catch(error => console.log('No favorites for user ', error.message));
       }
       const data = await fetch(`/stations/${filter.country}`).then(res => res.json());
-      const filteredStations = await data.map(station => {
+      // if data.success = true map them, else, display error?
+      const filteredStations = await data.stations.map(station => {
         const filteredStation = station;
         if (favorites.some(uuid => station.stationuuid === uuid)) {
           filteredStation.favorite = true;
@@ -48,6 +49,7 @@ const ResultsList = ({ filter }) => {
 };
 
 const Wrapper = styled.ul`
+  width: 80%;
   margin-top: -7rem;
   background-color: rgba(0,0,0, 0.2);
   border-radius: 0.3rem;
@@ -56,6 +58,10 @@ const Wrapper = styled.ul`
   gap: 1rem;
   padding: 0.4rem;
   margin-bottom: 2rem;
+
+  @media (min-width: 768px){
+    width: 60%;
+  }
 `;
 
 export default ResultsList;

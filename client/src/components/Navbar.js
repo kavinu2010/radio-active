@@ -34,7 +34,7 @@ const MenuToggle = styled.section`
   `;
 
 const Icon = styled.span`
-  z-index: 1;
+  z-index: 50;
   position: relative;
   background-color: black;  width: 3rem;
   width: 2.2rem;
@@ -78,6 +78,7 @@ const Icon = styled.span`
 `;
 
 const Menu = styled.ul`
+  z-index: 50;
   display: ${props => (props.showMenu ? 'flex' : 'none')};
   flex-direction: column;
   padding: 1rem;

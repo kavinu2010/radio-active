@@ -16,7 +16,31 @@ exports.getStations = async (req, res) => {
         genres: station.tags,
         country,
       }));
-    return res.status(200).json(filteredStations);
+    return res.status(200).json({ success: true, stations: filteredStations });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+exports.getFavoriteStations = async (req, res) => {
+  const email = req.params.user;
+  try {
+    const user = await User.find({ email });
+    const uuids = await user[0].favorites.join();
+    const uri = `http://de1.api.radio-browser.info/json/stations/byuuid?uuids=${uuids}`;
+    const data = await fetch(uri).then(result => result.json());
+    const filteredStations = await data.map(station => (
+      {
+        id: station.stationuuid,
+        name: station.name,
+        url: station.url_resolved,
+        favicon: station.favicon,
+        language: station.language,
+        genres: station.tags,
+        country: station.country,
+      }));
+
+    return res.status(200).json({ success: true, stations: filteredStations });
   } catch (error) {
     return res.status(500).json({ success: false, error: error.message });
   }

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+// import AudioSpectrum from 'react-audio-spectrum2';
 
 const Radiostation = ({ station }) => {
   const { user, isAuthenticated } = useAuth0();
@@ -61,9 +62,22 @@ const Radiostation = ({ station }) => {
         {renderFavBtn()}
       </div>
       <p>{station.language}</p>
-      <audio controls>
-        <source src={station.url} type="audio/mp3" />
-      </audio>
+      <audio id="audio-element" controls src={station.url} type="audio/mp3" />
+      {/* <AudioSpectrum
+        id="audio-canvas"
+        height={60}
+        width="100%"
+        audioId="audio-element"
+        capColor="red"
+        capHeight={2}
+        meterWidth={2}
+        meterCount={512}
+        meterColor={[
+          { stop: 0, color: '#f00' },
+          { stop: 0.5, color: '#0CD7FD' },
+          { stop: 1, color: 'red' },
+        ]}
+        gap={4} /> */}
     </Station>
   );
 };
