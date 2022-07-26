@@ -38,6 +38,7 @@ exports.getFavoriteStations = async (req, res) => {
         language: station.language,
         genres: station.tags,
         country: station.country,
+        favorite: true,
       }));
 
     return res.status(200).json({ success: true, stations: filteredStations });
