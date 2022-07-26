@@ -5,7 +5,7 @@ import LoginIcon from '@mui/icons-material/Login';
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <LoginIcon sx={{ fontSize: 50, cursor: 'pointer' }} onClick={() => loginWithRedirect()} />;
+  return <LoginIcon sx={{ color: '#2dc847', fontSize: 50, cursor: 'pointer' }} onClick={() => loginWithRedirect()} />;
 };
 
 export default LoginButton;

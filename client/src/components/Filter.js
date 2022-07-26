@@ -66,22 +66,20 @@ const Filter = ({ countries, setFilter }) => {
 };
 
 const FilterBox = styled.section`
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   width: 90%;
   align-items: center;
 
   label{
+    color: #2dc847;
     font-size: 1.2rem;
     font-weight: bold;
     width: 60%;
-    }
+  }
   @media (min-width: 768px){
     font-size: 1.4rem;
-    label{
-
-    }
-
   }
 `;
 
@@ -91,7 +89,9 @@ const Searchfield = styled.input`
   padding: 0.5rem;
   border-radius: 0.25rem;
   margin-top: 0.5rem;
-  border: 1px solid grey;
+  border: none;
+  outline: none;
+  background-color: #fdf6ed;
   @media (min-width: 768px){
     font-size: 1.2rem;
     width: 60%;
@@ -100,20 +100,22 @@ const Searchfield = styled.input`
 
 const FilterList = styled.ul`
   width: 80%;
-  height: 10rem;
+  height: 9.5rem;
   opacity: ${props => (props.active ? '100%' : '0')};
   overflow-y: scroll;
-  z-index: 1;
+  z-index: ${props => (props.active ? '1' : '-1')};
+  border-radius: 3px;
 
   button{
-    background-color: #8bc08b;
+    background-color: #fdf6ed;
     font-size: 1rem;
     border: none;
     padding: .3rem;
     width:100%;
+    cursor: pointer;
 
     &:hover{
-      background-color: #71ea71;
+      background-color: #2dc847;
     }
   }
   @media (min-width: 768px){

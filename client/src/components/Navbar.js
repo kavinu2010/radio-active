@@ -36,7 +36,7 @@ const MenuToggle = styled.section`
 const Icon = styled.span`
   z-index: 50;
   position: relative;
-  background-color: black;  width: 3rem;
+  background-color: #2dc847;  
   width: 2.2rem;
   height: 0.28rem;
   border-radius: 3px;
@@ -47,7 +47,7 @@ const Icon = styled.span`
   &::before,
   &::after {
     content: "";
-    background-color: black;
+    background-color: #2dc847;
     width: 2.2rem;
     height: 0.28rem;
     border-radius: 3px;
@@ -77,30 +77,25 @@ const Icon = styled.span`
   }
 `;
 
-const Menu = styled.ul`
+const Menu = styled.section`
   z-index: 50;
   display: ${props => (props.showMenu ? 'flex' : 'none')};
-  flex-direction: column;
+  border-radius: .3rem;
+  flex-direction: row;
   padding: 1rem;
-  width: 97%;
+  width: 90%;
+  // margin: .2rem 7%;
   text-align: center;
   position: fixed;
-  top: 6.1rem;
-  background: white;
+  left: 2.5%;
+  top: 7rem;
+  background: #2dc847;
 
   @media (min-width: 768px){
-    width: 90%;
-    top: 8rem;
-    margin-left: 1rem;
+    width: 80%;
+    top: 9rem;
+    left: 11%;
     flex-direction: row;
-  }
-
-  @media (min-width: 1024px){
-    margin-left: -.7rem;
-  }
-
-  @media (min-width: 1600px){
-    margin-left: -5rem;
   }
 
   .MenuLink{
@@ -110,10 +105,11 @@ const Menu = styled.ul`
     width: 50%;
     align-self: center;
     text-decoration: none;
+    font-weight: 800;
 
     &:hover{
-      color: green;
-      font-weight: 500;
+      color: #fdf6ed;
+      font-weight: 600;
     }
 
     @media (min-width: 768px){

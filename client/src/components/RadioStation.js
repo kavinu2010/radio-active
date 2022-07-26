@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react'; // , { useState }
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-// import AudioSpectrum from 'react-audio-spectrum2';
 
 const Radiostation = ({ station }) => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const [favorite, setFavorite] = useState(station.favorite);
+  const [loginMessage, setLoginMessage] = useState(false);
 
   const addFavorite = async () => {
     await fetch('/favorites', {
@@ -39,19 +39,28 @@ const Radiostation = ({ station }) => {
     setFavorite(false);
   };
 
+  const handleLoginMsg = () => {
+    setLoginMessage(true);
+    setTimeout(() => {
+      setLoginMessage(false);
+    }, 1500);
+  };
+
   const renderFavBtn = () => {
-    if (isAuthenticated) {
+    if (isAuthenticated && !isLoading) {
       if (favorite) {
-        return <FavoriteIcon className="favoriteBtn" onClick={unFavorite} />;
+        return <FavoriteIcon sx={{ cursor: 'pointer', color: 'red' }} className="favoriteBtn" onClick={unFavorite} />;
       }
-      return <FavoriteBorderIcon className="favoriteBtn" onClick={addFavorite} />;
+      return <FavoriteBorderIcon sx={{ cursor: 'pointer', color: '#fdf6ed' }} className="favoriteBtn" onClick={addFavorite} />;
     }
-    // add onClick and display "need to log in to add favorites"
-    return <FavoriteBorderIcon className="favoriteBtn" disabled />;
+    if (!isLoading && !isAuthenticated) {
+      return <FavoriteBorderIcon sx={{ cursor: 'pointer', color: '#8a847a' }} className="favoriteBtn--disabled" onClick={handleLoginMsg} />;
+    }
+    return null;
   };
 
   const renderFavicon = () => {
-    try { return <img src={station.favicon || '/radio.jpeg'} alt="Radio Station Logo" />; } catch (error) { return console.log(error.message); }
+    try { return <img src={station.favicon || '/radio.jpeg'} alt="logo" />; } catch (error) { return console.log(error.message); }
   };
 
   return (
@@ -60,30 +69,16 @@ const Radiostation = ({ station }) => {
         {renderFavicon()}
         <h2>{station.name}</h2>
         {renderFavBtn()}
+        {loginMessage ? <p className="loginMsg">Please login to add favorite</p> : null}
       </div>
       <p>{station.language}</p>
       <audio id="audio-element" controls src={station.url} type="audio/mp3" />
-      {/* <AudioSpectrum
-        id="audio-canvas"
-        height={60}
-        width="100%"
-        audioId="audio-element"
-        capColor="red"
-        capHeight={2}
-        meterWidth={2}
-        meterCount={512}
-        meterColor={[
-          { stop: 0, color: '#f00' },
-          { stop: 0.5, color: '#0CD7FD' },
-          { stop: 1, color: 'red' },
-        ]}
-        gap={4} /> */}
     </Station>
   );
 };
 
 const Station = styled.section`
-background-color: rgba(255, 255, 255, 0.588);
+background-color: rgba(255, 255, 255, 0.15);
 border-radius: 0.25rem;
 padding: 0.5rem;
 display: flex;
@@ -97,9 +92,17 @@ gap: 0.5rem;
   width: 100%;
 };
 
-/* .favoriteBtn{
-  align-self: flex-end;
-} */
+.loginMsg{
+  background-color: #1b1208;
+  border-radius: 3px;
+  position: fixed;
+  z-index: 2;
+  transform: translate(4rem, 0rem);
+  opacity: 100%;
+  transition: opacity 2s;
+  padding: .2rem;
+  color: #2dc847;
+}
 
 img{
   max-width: 30px;
@@ -113,6 +116,7 @@ audio{
 
 h2{
   font-size: 1rem;
+  color: #2dc847;
 }
 `;
 export default Radiostation;

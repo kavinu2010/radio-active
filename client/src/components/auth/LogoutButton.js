@@ -7,7 +7,7 @@ const LogoutButton = () => {
 
   return (
     <LogoutIcon
-      sx={{ fontSize: 50, cursor: 'pointer' }}
+      sx={{ fontSize: 50, cursor: 'pointer', color: '#8a847a' }}
       onClick={() => logout({ returnTo: window.location.origin })} />
   );
 };

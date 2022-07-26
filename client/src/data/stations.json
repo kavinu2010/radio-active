@@ -1,0 +1,74 @@
+[
+      {
+          "id": "08f5ceb0-9f2d-4804-b8e8-1286b67983d6",
+          "name": "1170 SEN Sydney",
+          "url": "https://sen.streamguys1.com/SorryOutside/playlist.m3u8",
+          "favicon": "https://www.sen.com.au/images/favicon-180x180.png",
+          "language": "english",
+          "genres": "sport",
+          "country": "Australia"
+      },
+      {
+          "id": "11fa9f4b-df96-4615-9c14-57e01cbf1003",
+          "name": "faysal fm",
+          "url": "http://sostecstream.com:9994/stream",
+          "favicon": "",
+          "language": "dakota",
+          "genres": "hu",
+          "country": "Andorra"
+      },
+      {
+          "id": "3f1bb8bc-1a9e-43db-a685-d9bd076d632d",
+          "name": "1029 Hot Tomato",
+          "url": "http://24963.live.streamtheworld.com:80/GOL_HOTTOMATO.mp3",
+          "favicon": "https://www.mygc.com.au/apple-touch-icon.png",
+          "language": "english",
+          "genres": "",
+          "country": "Australia"
+      },
+      {
+          "id": "5ed84267-7281-11e9-af37-52543be04c81",
+          "name": "Fama",
+          "url": "http://eu.stream4cast.com:8036/stream/",
+          "favicon": "",
+          "language": "",
+          "genres": "",
+          "country": "Armenia"
+      },
+      {
+          "id": "8e1cf94c-7195-11e9-af37-52543be04c81",
+          "name": "Armenia One TV",
+          "url": "http://amtv1.livestreamingcdn.com/am2abr/tracks-v1a1/index.m3u8",
+          "favicon": "http://www.1tv.am/favicon.ico",
+          "language": "armenian",
+          "genres": "",
+          "country": "Armenia"
+      },
+      {
+          "id": "9642ad8b-0601-11e8-ae97-52543be04c81",
+          "name": "106,7 Rockklassiker",
+          "url": "http://edge-bauerse-02-thn.sharp-stream.com/rockklassiker_instream_se_mp3?ua=WEB&",
+          "favicon": "http://d46xrhm44izup.cloudfront.net/?url=%2Fimg%2Fstations%2Fse%2Frockklassiker.png&w=100&h=100",
+          "language": "swedish",
+          "genres": "classic rock",
+          "country": "Sweden"
+      },
+      {
+          "id": "97d4e916-c5b2-480a-905e-0dd2aafd3c8b",
+          "name": "Rádio Pátria Gaúcha",
+          "url": "https://servidor16-3.brlogic.com:7614/live?source=website",
+          "favicon": "https://public-rf-upload.minhawebradio.net/160647/cover/aba2ae793faa9f512958e0fc9bbc5fab.png",
+          "language": "",
+          "genres": "gaúcha,nativa,pampa",
+          "country": "Brazil"
+      },
+      {
+          "id": "fb31dd25-0ee5-45c5-9d75-3cc74d84c13b",
+          "name": "lassulus radio",
+          "url": "http://lassul.us:8000/radio.mp3",
+          "favicon": "",
+          "language": "",
+          "genres": "",
+          "country": "Antarctica"
+      }
+  ]

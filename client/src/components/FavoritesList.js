@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react'; // useState,
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
 import RadioStation from './RadioStation';
+import mockStations from '../data/stations.json';
 
 const FavoritesList = () => {
-  const [stations, setStations] = useState([]);
+  const [stations, setStations] = useState([mockStations]);
   const { user, isLoading, isAuthenticated } = useAuth0();
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const FavoritesList = () => {
 };
 
 const Wrapper = styled.ul`
-  background-color: rgba(0,0,0, 0.2);
+  background-color: transparent;
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;

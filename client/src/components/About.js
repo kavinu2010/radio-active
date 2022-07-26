@@ -26,19 +26,22 @@ const Heading = styled.h2`
 
 const Wrapper = styled.section`
   width: 90%; 
-  margin-top: 2rem;
-  background-color: rgba(255,255,255, 0.2);
+  margin-top: 7rem;
+  background-color: #fdf6ed;
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 2rem;
+  border: 10px solid #2dc847;
+  color: #1b1208;
 
   p{
     margin-bottom: 1rem;
     text-align: justify;
     padding: 0 1rem;
+  
   }
 
   @media (min-width: 768px){
