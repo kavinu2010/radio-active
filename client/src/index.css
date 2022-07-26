@@ -6,15 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(0deg, rgba(2,36,0,1) 0%, rgba(31,121,9,1) 35%, rgba(251,255,0,1) 100%) fixed;
+  /* 0deg, rgb(0, 0, 0) 0%, rgb(18, 9, 121) 35%, rgb(155, 217, 243) 100%) */
 
 }
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-  padding: 0;
-  /* border: 1px fuchsia solid; */
-}
- 
-
-
