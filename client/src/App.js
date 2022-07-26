@@ -6,6 +6,7 @@ import FavoritesLists from './components/FavoritesList';
 import Header from './components/Header';
 import Filter from './components/Filter';
 import ResultsList from './components/ResultsList';
+import About from './components/About';
 import Footer from './components/Footer';
 import countries from './data/countries.json';
 
@@ -28,19 +29,13 @@ function App() {
           <Route
             path="/favorites"
             element={(
-              <>
-                <FavoritesLists />
-              </>
+              <FavoritesLists />
             )} />
-          {/*
           <Route
             path="/about"
             element={(
-              <>
-                <About />
-              </>
+              <About />
             )} />
-            */}
         </Routes>
         <Footer />
       </BrowserRouter>
