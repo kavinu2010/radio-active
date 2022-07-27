@@ -26,8 +26,8 @@ const Heading = styled.h2`
 
 const Wrapper = styled.section`
   width: 90%; 
-  margin-top: 7rem;
-  background-color: #fdf6ed;
+  margin-top: 2rem;
+  background-color: #fdf6ed77;
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;

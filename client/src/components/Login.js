@@ -16,25 +16,34 @@ const Login = () => {
 };
 
 const Wrapper = styled.section`
-display: inherit;
-flex-direction: column;
+grid-column-start: 3;
+grid-column-end: 3;
+justify-self: end;
+align-self: center;
+margin-right: .8rem;
+border-radius: .5rem;
+padding: 0 .3rem;
 font-size: .8rem;
 font-weight: bold;
-color: #fdf6ed;
+
+&:hover{
+  background-color: #fdf6ed22;
+}
 
 .loginText{
+  margin-top: -.4rem;
   color: #2dc847;
 }
 
 .logoutText{
+  margin-top: -.4rem;
   color: #8a847a;
 }
 
 @media (min-width: 768px){
   font-size: 1.1rem;
+  margin-top: 1rem;
  }
 `;
-export default Login;
 
-// elements needed :
-// anchor tag sign up ,email, password, anchor tag forgot your pass,ok btn
+export default Login;

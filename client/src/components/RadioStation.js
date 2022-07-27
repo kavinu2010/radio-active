@@ -60,37 +60,35 @@ const Radiostation = ({ station }) => {
   };
 
   const renderFavicon = () => {
-    try { return <img src={station.favicon || '/radio.jpeg'} alt="logo" />; } catch (error) { return console.log(error.message); }
+    try { return <img src={station.favicon || '/live-stream-logo.png'} alt="logo" />; } catch (error) { return console.log(error.message); }
   };
 
   return (
     <Station>
-      <div className="playerHeader">
-        {renderFavicon()}
-        <h2>{station.name}</h2>
-        {renderFavBtn()}
-        {loginMessage ? <p className="loginMsg">Please login to add favorite</p> : null}
-      </div>
-      <p>{station.language}</p>
-      <audio id="audio-element" controls src={station.url} type="audio/mp3" />
+      {renderFavicon()}
+      <h2>{station.name}</h2>
+      {renderFavBtn()}
+      {loginMessage ? <p className="loginMsg">Please login to add favorite</p> : null}
+      <Audio
+        id="audio-element"
+        controls="true"
+        src={station.url}
+        type="audio/mp3"
+        controlsList="noplaybackrate nodownload" />
+      <p>{station.language.charAt(0).toUpperCase() + station.language.slice(1)}</p>
     </Station>
   );
 };
 
 const Station = styled.section`
-background-color: rgba(255, 255, 255, 0.15);
-border-radius: 0.25rem;
-padding: 0.5rem;
-display: flex;
-flex-direction: column;
-gap: 0.5rem;
-
-.playerHeader{
-  display: inherit;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-};
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 0.25rem;
+  padding: .8rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr auto 1fr;
+  justify-items: center;
+  align-items: center;
 
 .loginMsg{
   background-color: #1b1208;
@@ -105,18 +103,84 @@ gap: 0.5rem;
 }
 
 img{
-  max-width: 30px;
-  max-height: 30px;
-}
-
-audio{
-  width:100%;
-  height: 30px;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
 }
 
 h2{
   font-size: 1rem;
-  color: #2dc847;
+  color: #fdf6ed;
+  font-weight: 500;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1; 
+  grid-row-end: 3;
+  align-self: start;
+  margin-top: 1rem;
+}
+
+svg{
+  grid-column-start: 5;
+  grid-column-end: 5;
+  transform: scale(1.3);
+}
+
+p{
+  grid-column-start: 5;
+  grid-column-end: 5;
+  grid-row-start: 3;
 }
 `;
+
+const Audio = styled.audio`
+  width: 6.8rem; 
+  height: 1.7rem;
+  transform: scale(1.2);
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  justify-self: start;
+  align-self: center;
+  margin-left: 1.6rem;
+
+  @media (min-width: 768px){
+    width: 9rem;
+    height: 2rem;
+    justify-self: center;
+    margin-left:0;
+  }
+
+&::-webkit-media-controls-panel {
+  background-color: #fdf6ed;
+  box-shadow: 4px 4px 4px 4px black;
+}
+
+&::-webkit-media-controls-mute-button {
+  color: #B1D4E0;
+  border-radius: 50%;
+}
+
+&::-webkit-media-controls-play-button {
+  color: #B1D4E0;
+  border-radius: 50%;
+}
+
+&::-webkit-media-controls-current-time-display {
+  display: none;
+}
+
+&::-webkit-media-controls-time-remaining-display {
+  display:none;
+}
+
+&::-webkit-media-controls-timeline {
+  display:none;
+}
+
+`;
+
 export default Radiostation;

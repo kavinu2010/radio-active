@@ -5,7 +5,6 @@ const Footer = () => (
   <>
     <Heading>
       <a target="_blank" rel="noreferrer" href="https://github.com/kavinu2010/radio-active.git">Check out the code on GitHub</a>
-      <a className="imgTag" href="https://www.freepik.com/vectors/atom">Atom vector created by rawpixel.com - www.freepik.com</a>
     </Heading>
   </>
 );
@@ -25,10 +24,6 @@ a{
 a:hover{
   color: white;
   transition: 0.3s;
-}
-.imgTag{
- font-size: 0.8rem;
- font-weight: 400;
 }
 
 @media (min-width:768px){

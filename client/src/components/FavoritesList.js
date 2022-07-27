@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react'; // useState,
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
 import RadioStation from './RadioStation';
-import mockStations from '../data/stations.json';
 
 const FavoritesList = () => {
-  const [stations, setStations] = useState([mockStations]);
+  const [stations, setStations] = useState([]);
   const { user, isLoading, isAuthenticated } = useAuth0();
 
   useEffect(() => {
