@@ -91,14 +91,12 @@ const Station = styled.section`
   align-items: center;
 
 .loginMsg{
+  position: absolute;
+  z-index: 2;
+  transform: translate(8rem, -1.5rem);
   background-color: #1b1208;
   border-radius: 3px;
-  position: fixed;
-  z-index: 2;
-  transform: translate(4rem, 0rem);
-  opacity: 100%;
-  transition: opacity 2s;
-  padding: .2rem;
+  padding: .4rem;
   color: #2dc847;
 }
 
